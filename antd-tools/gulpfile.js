@@ -357,10 +357,10 @@ function publish(tagString, done) {
   }
   const publishNpm = process.env.PUBLISH_NPM_CLI || 'npm';
   runCmd(publishNpm, args, code => {
-    tag();
-    githubRelease(() => {
-      done(code);
-    });
+    // tag();
+    // githubRelease(() => {
+    //   done(code);
+    // });
   });
 }
 
@@ -426,7 +426,7 @@ gulp.task(
 
 gulp.task(
   'pub',
-  gulp.series('check-git', 'compile', 'dist', done => {
+  gulp.series('check-git', 'compile', done => {
     // if (!process.env.GITHUB_TOKEN) {
     //   console.log('no GitHub token found, skip');
     // } else {
@@ -478,37 +478,37 @@ gulp.task(
   }),
 );
 
-gulp.task(
-  'guard',
-  gulp.series(done => {
-    function reportError() {
-      console.log(chalk.bgRed('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'));
-      console.log(chalk.bgRed('!! `npm publish` is forbidden for this package. !!'));
-      console.log(chalk.bgRed('!! Use `npm run pub` instead.        !!'));
-      console.log(chalk.bgRed('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'));
-    }
-    const npmArgs = getNpmArgs();
-    if (npmArgs) {
-      for (let arg = npmArgs.shift(); arg; arg = npmArgs.shift()) {
-        if (
-          /^pu(b(l(i(sh?)?)?)?)?$/.test(arg) &&
-          npmArgs.indexOf('--with-antd-tools') < 0 &&
-          !process.env.npm_config_with_antd_tools
-        ) {
-          reportError();
-          done(1);
-          return;
-        }
-      }
-    }
-    done();
-  }),
-);
+// gulp.task(
+//   'guard',
+//   gulp.series(done => {
+//     function reportError() {
+//       console.log(chalk.bgRed('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'));
+//       console.log(chalk.bgRed('!! `npm publish` is forbidden for this package. !!'));
+//       console.log(chalk.bgRed('!! Use `npm run pub` instead.        !!'));
+//       console.log(chalk.bgRed('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'));
+//     }
+//     const npmArgs = getNpmArgs();
+//     if (npmArgs) {
+//       for (let arg = npmArgs.shift(); arg; arg = npmArgs.shift()) {
+//         if (
+//           /^pu(b(l(i(sh?)?)?)?)?$/.test(arg) &&
+//           npmArgs.indexOf('--with-antd-tools') < 0 &&
+//           !process.env.npm_config_with_antd_tools
+//         ) {
+//           reportError();
+//           done(1);
+//           return;
+//         }
+//       }
+//     }
+//     done();
+//   }),
+// );
 
-gulp.task(
-  'sort-api-table',
-  gulp.series(done => {
-    sortApiTable();
-    done();
-  }),
-);
+// gulp.task(
+//   'sort-api-table',
+//   gulp.series(done => {
+//     sortApiTable();
+//     done();
+//   }),
+// );
