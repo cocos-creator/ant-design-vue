@@ -31,8 +31,7 @@
   text-shadow: @btn-text-shadow;
   box-shadow: @btn-primary-shadow;
 
-  &:hover,
-  &:focus {
+  &:hover {
     & when (@theme = dark) {
       .button-color(
         @color; ~`colorPalette('@{background}', 7) `; ~`colorPalette('@{background}', 7) `
@@ -64,8 +63,7 @@
 .button-variant-other(@color; @background; @border) {
   .button-color(@color; @background; @border);
 
-  &:hover,
-  &:focus {
+  &:hover {
     & when (@theme = dark) {
       .button-color(@primary-5; @background; @primary-5);
     }
@@ -92,8 +90,7 @@
 .button-variant-ghost(@color; @border: @color) {
   .button-color(@color; transparent; @border);
   text-shadow: none;
-  &:hover,
-  &:focus {
+  &:hover {
     & when (@border = transparent) {
       & when (@theme = dark) {
         .button-color(~`colorPalette('@{color}', 7) `; transparent; transparent);
@@ -256,7 +253,6 @@
 .btn-default() {
   .button-variant-other(@btn-default-color; @btn-default-bg; @btn-default-border);
   &:hover,
-  &:focus,
   &:active {
     text-decoration: none;
     background: @btn-default-bg;
@@ -278,8 +274,7 @@
 // danger default button style
 .btn-danger-default() {
   .button-color(@error-color, @btn-default-bg, @error-color);
-  &:hover,
-  &:focus {
+  &:hover {
     & when (@theme = dark) {
       .button-color(
         ~`colorPalette('@{error-color}', 7) `; @btn-default-bg; ~`colorPalette('@{error-color}', 7)
@@ -313,8 +308,7 @@
 .btn-danger-link() {
   .button-variant-other(@error-color, transparent, transparent);
   box-shadow: none;
-  &:hover,
-  &:focus {
+  &:hover {
     & when (@theme = dark) {
       .button-color(~`colorPalette('@{error-color}', 7) `; transparent; transparent);
     }
@@ -350,8 +344,7 @@
 .btn-text() {
   .button-variant-other(@text-color, transparent, transparent);
   box-shadow: none;
-  &:hover,
-  &:focus {
+  &:hover {
     color: @text-color;
     background: @btn-text-hover-bg;
     border-color: transparent;
@@ -368,8 +361,7 @@
 .btn-danger-text() {
   .button-variant-other(@error-color, transparent, transparent);
   box-shadow: none;
-  &:hover,
-  &:focus {
+  &:hover {
     & when (@theme = dark) {
       .button-color(~`colorPalette('@{error-color}', 7) `; @btn-text-hover-bg; transparent);
     }
