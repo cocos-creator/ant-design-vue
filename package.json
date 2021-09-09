@@ -1,5 +1,5 @@
 {
-  "name": "ant-design-vue",
+  "name": "@ice/antdv",
   "version": "2.2.6",
   "title": "Ant Design Vue",
   "description": "An enterprise-class UI design language and Vue-based implementation",
@@ -46,7 +46,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vueComponent/ant-design-vue.git"
+    "url": "git+https://github.com/cocos-creator/ant-design-vue.git"
+  },
+  "publishConfig": {
+    "registry": "http://creator-npm.cocos.org:7001/",
+    "access": "public"
   },
   "license": "MIT",
   "funding": {
@@ -175,7 +179,7 @@
     "through2": "^3.0.0",
     "ts-jest": "^26.4.1",
     "ts-loader": "^9.1.0",
-    "typescript": "^4.2.0",
+    "typescript": "~4.3.4",
     "umi-mock-middleware": "^1.0.0",
     "umi-request": "^1.3.5",
     "url-loader": "^3.0.0",

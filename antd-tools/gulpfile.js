@@ -300,10 +300,10 @@ function publish(tagString, done) {
   }
   const publishNpm = process.env.PUBLISH_NPM_CLI || 'npm';
   runCmd(publishNpm, args, code => {
-    tag();
-    githubRelease(() => {
-      done(code);
-    });
+    // tag();
+    // githubRelease(() => {
+    //   done(code);
+    // });
   });
 }
 
@@ -407,25 +407,25 @@ gulp.task(
   }),
 );
 
-gulp.task(
-  'guard',
-  gulp.series(done => {
-    function reportError() {
-      console.log(chalk.bgRed('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'));
-      console.log(chalk.bgRed('!! `npm publish` is forbidden for this package. !!'));
-      console.log(chalk.bgRed('!! Use `npm run pub` instead.        !!'));
-      console.log(chalk.bgRed('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'));
-    }
-    const npmArgs = getNpmArgs();
-    if (npmArgs) {
-      for (let arg = npmArgs.shift(); arg; arg = npmArgs.shift()) {
-        if (/^pu(b(l(i(sh?)?)?)?)?$/.test(arg) && npmArgs.indexOf('--with-antd-tools') < 0) {
-          reportError();
-          done(1);
-          return;
-        }
-      }
-    }
-    done();
-  }),
-);
+// gulp.task(
+//   'guard',
+//   gulp.series(done => {
+//     function reportError() {
+//       console.log(chalk.bgRed('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'));
+//       console.log(chalk.bgRed('!! `npm publish` is forbidden for this package. !!'));
+//       console.log(chalk.bgRed('!! Use `npm run pub` instead.        !!'));
+//       console.log(chalk.bgRed('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'));
+//     }
+//     const npmArgs = getNpmArgs();
+//     if (npmArgs) {
+//       for (let arg = npmArgs.shift(); arg; arg = npmArgs.shift()) {
+//         if (/^pu(b(l(i(sh?)?)?)?)?$/.test(arg) && npmArgs.indexOf('--with-antd-tools') < 0) {
+//           reportError();
+//           done(1);
+//           return;
+//         }
+//       }
+//     }
+//     done();
+//   }),
+// );
