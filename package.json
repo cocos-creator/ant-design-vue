@@ -1,7 +1,10 @@
 {
-  "name": "ant-design-vue",
-  "version": "3.2.9",
+  "name": "@ice/antdv",
+  "version": "3.2.9-cc.1",
   "title": "Ant Design Vue",
+  "maintainers": [
+    "chenjun"
+  ],
   "description": "An enterprise-class UI design language and Vue-based implementation",
   "keywords": [
     "vue",
@@ -18,7 +21,6 @@
   ],
   "main": "lib/index.js",
   "module": "es/index.js",
-  "unpkg": "dist/antd.min.js",
   "typings": "lib/index.d.ts",
   "files": [
     "dist",
@@ -71,7 +73,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vueComponent/ant-design-vue.git"
+    "url": "git+https://github.com/cocos-creator/ant-design-vue.git"
+  },
+  "publishConfig": {
+    "registry": "http://creator-npm.cocos.org:7001/",
+    "access": "public"
   },
   "license": "MIT",
   "funding": {
